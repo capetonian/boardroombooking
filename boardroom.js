@@ -12,6 +12,10 @@ Boardroom = Backbone.Model.extend({
 	}
 });
 
+var Boardrooms = Backbone.Collection.extend({
+	model: Boardroom
+});
+
 BoardroomView = Backbone.View.extend({
 	initialize: function() {
 
@@ -46,7 +50,7 @@ $(document).ready(function() {
 	// Initiate the router 
 	var app_router = new AppRouter;
 	app_router.on('route:defaultRoute', function(actions) {
-		
+
 
 		// Models 
 
@@ -63,10 +67,9 @@ $(document).ready(function() {
 			name: "Bat Cave"
 		});
 
-		if(actions !== null){
+		if (actions !== null) {
 			var room = eval(actions); /* TODO : Remove eval, rather strap into collection within module */
-		}
-		else{
+		} else {
 			var room = esperance;
 		}
 
